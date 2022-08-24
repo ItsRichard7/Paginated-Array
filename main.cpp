@@ -3,8 +3,11 @@
 #include <iostream>
 #include "FileCreation.h"
 
+using namespace std;
+
 int main() {
     FileCreation fileCreator;
     fileCreator.createFile("binaryNumber");
+    cout << fileCreator.intToBinary(5555) << endl;
     return 0;
 }

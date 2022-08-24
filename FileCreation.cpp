@@ -1,18 +1,26 @@
 // Libraries
 #include <iostream>
+#include <string>
+#include <bitset>
 #include "FileCreation.h"
 #include "fstream"
-#include <string>
 
 using namespace std;
 
-// Fill the text file with number separate by "," calculating the space gave by the user
-int FileCreation::fillNumbers(int BytesFile){
-    return 0;
+// Take a number and convert it to binary
+string FileCreation::intToBinary(int num){
+    string toBinary;
+    while(num != 0){
+        toBinary = (num % 2 == 0 ? "0" : "1") + toBinary;
+        num /= 2;
+    }
+    bitset<32> bitnumber(toBinary);
+    toBinary = bitnumber.to_string();
+    return toBinary;
 }
 
-// Take a number and convert it to binary
-int FileCreation::intToBinary(){
+// Fill the text file with number separate by "," calculating the space gave by the user
+int FileCreation::fillNumbers(int BytesFile){
     return 0;
 }
 

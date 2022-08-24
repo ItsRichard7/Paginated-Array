@@ -12,8 +12,8 @@ class FileCreation {
 
 private:
     int fillNumbers(int BytesFile);
-    int intToBinary();
 public:
+    string intToBinary(int num);
     int createFile(string filename);
 };
 
