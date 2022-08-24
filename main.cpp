@@ -7,7 +7,6 @@ using namespace std;
 
 int main() {
     FileCreation fileCreator;
-    fileCreator.createFile("binaryNumber");
-    cout << fileCreator.intToBinary(5555) << endl;
+    fileCreator.createFile("binaryNumber", 1);
     return 0;
 }

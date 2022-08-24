@@ -20,15 +20,30 @@ string FileCreation::intToBinary(int num){
 }
 
 // Fill the text file with number separate by "," calculating the space gave by the user
-int FileCreation::fillNumbers(int BytesFile){
+int FileCreation::fillNumbers(string filename, int Kilobytes){
+    int numLimit = 32 * Kilobytes;
+    long tmp;
+    string binaryNum;
+    fstream writeFile;
+    writeFile.open(filename, ios::app);
+    for (int i = 1; i <= numLimit; ++i) {
+        tmp = rand()%(1-4294967295);
+        binaryNum = intToBinary(tmp);
+        if (i == numLimit){
+            writeFile << binaryNum;
+        } else{
+            writeFile << binaryNum << ",";
+        }
+    }
     return 0;
 }
 
 // Create a new csv file
-int FileCreation::createFile(string filename){
+int FileCreation::createFile(string filename, int Kilobytes){
     string fileType;
-    fileType = filename + ".csv";
+    fileType = filename + ".txt";
     cout << "The file: " << fileType << " was successfully created" << endl;
     ofstream reader(fileType.c_str());
     reader.close();
+    fillNumbers(fileType, Kilobytes);
 }

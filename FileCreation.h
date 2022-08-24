@@ -11,10 +11,10 @@ using namespace std;
 class FileCreation {
 
 private:
-    int fillNumbers(int BytesFile);
+    int fillNumbers(string filename, int Kilobytes);
 public:
     string intToBinary(int num);
-    int createFile(string filename);
+    int createFile(string filename, int Kilobytes);
 };
 
 
