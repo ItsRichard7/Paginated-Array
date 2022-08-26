@@ -15,14 +15,20 @@ int SortAlgorithms::partition(int *array, int low, int high, int pivot) {
     return index;
 }
 
-int SortAlgorithms::quickSort(int *array, int low, int high){
+int SortAlgorithms::quickSortAux(int *array, int low, int high){
     if (low < high){
         int pivot = array[high];
         int index = partition(array, low, high, pivot);
 
-        quickSort(array, low, index - 1);
-        quickSort(array, index + 1, high);
+        quickSortAux(array, low, index - 1);
+        quickSortAux(array, index + 1, high);
     }
+    return 0;
+}
+
+int SortAlgorithms::quickSort (int *array, int low, int high){
+    quickSortAux(array, low, high);
+    cout << "Sorted by Quick Sort:" << endl;
     return 0;
 }
 
@@ -42,5 +48,22 @@ int SortAlgorithms::selectionSort(int *array, int size) {
         }
         swap(&array[min], &array[i]);
     }
+    cout << "Sorted by Selection Sort:" << endl;
+    return 0;
+}
+
+int SortAlgorithms::insertionSort(int *array, int size) {
+    int temp;
+    int index;
+    for (int i = 0; i < size; i++) {
+        temp = array[i];
+        index = i - 1;
+        while (index >= 0 && temp <= array[index]){
+            array[index+1] = array[index];
+            index--;
+        }
+        array[index+1] = temp;
+    }
+    cout << "Sorted by Insertion Sort:" << endl;
     return 0;
 }

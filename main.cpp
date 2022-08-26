@@ -21,9 +21,8 @@ int main() {
     cout << "]" << endl;
     int size = (sizeof(arr) / sizeof(arr[0]));
     SortAlgorithms sort;
-    sort.selectionSort(arr, size);
+    sort.quickSort(arr, 0, size -1);
 
-    cout << "Ya ordenado" << endl;
     cout << "[";
     for (int i = 0; i < 20; ++i) {
         if (i == 19){
