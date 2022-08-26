@@ -4,9 +4,11 @@
 
 class SortAlgorithms {
 private:
-    int partition(int arr[], int low, int high, int pivot);
+    int partition(int array[], int low, int high, int pivot);
+    int swap(int *a, int *b);
 public:
-    int quickSort(int arr[], int low, int high);
+    int quickSort(int array[], int low, int high);
+    int selectionSort(int array[], int size);
 };
 
 

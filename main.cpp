@@ -12,17 +12,25 @@ int main() {
     cout << "[";
     for (int i = 0; i < 20; ++i) {
         arr[i] = rand()%(1-100);
-        cout << arr[i] << ",";
+        if (i == 19){
+            cout << arr[i];
+        } else{
+            cout << arr[i] << ",";
+        }
     }
-    cout << "]";
-
+    cout << "]" << endl;
+    int size = (sizeof(arr) / sizeof(arr[0]));
     SortAlgorithms sort;
-    sort.quickSort(arr, 0, 19);
+    sort.selectionSort(arr, size);
 
     cout << "Ya ordenado" << endl;
     cout << "[";
     for (int i = 0; i < 20; ++i) {
-        cout << arr[i] << ",";
+        if (i == 19){
+            cout << arr[i];
+        } else{
+            cout << arr[i] << ",";
+        }
     }
     cout << "]";
     return 0;
