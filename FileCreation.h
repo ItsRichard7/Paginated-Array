@@ -8,7 +8,7 @@ class FileCreation {
 
 public:
     int fillNumbers(string filename, int Kilobytes);
-    string intToBinary(int num);
+    int convertIntFile(string filename);
     int createFileCSV(string filename);
 };
 

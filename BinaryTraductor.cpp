@@ -1,5 +1,5 @@
 #include <string>
-#include<iostream>
+#include <iostream>
 #include <bitset>
 #include "BinaryTraductor.h"
 
