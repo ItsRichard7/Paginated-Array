@@ -6,8 +6,10 @@ using namespace std;
 
 int main() {
     FileCreation fileCreator;
-    fileCreator.createFile("binaryNumber", 1);
+    fileCreator.createFileCSV("binaryNumber");
+    fileCreator.fillNumbers("binaryNumber" , 1);
 
+    /*
     int arr[20];
     cout << "[";
     for (int i = 0; i < 20; ++i) {
@@ -30,7 +32,7 @@ int main() {
         } else{
             cout << arr[i] << ",";
         }
-    }
+    }*/
     cout << "]";
     return 0;
 }

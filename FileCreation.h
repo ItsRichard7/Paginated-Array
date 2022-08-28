@@ -6,11 +6,10 @@ using namespace std;
 
 class FileCreation {
 
-private:
-    int fillNumbers(string filename, int Kilobytes);
 public:
+    int fillNumbers(string filename, int Kilobytes);
     string intToBinary(int num);
-    int createFile(string filename, int Kilobytes);
+    int createFileCSV(string filename);
 };
 
 

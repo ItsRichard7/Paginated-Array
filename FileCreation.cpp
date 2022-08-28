@@ -1,49 +1,35 @@
 // Libraries
 #include <iostream>
 #include <string>
-#include <bitset>
 #include "FileCreation.h"
 #include "fstream"
 
 using namespace std;
 
-// Take a number and convert it to binary
-string FileCreation::intToBinary(int num){
-    string toBinary;
-    while(num != 0){
-        toBinary = (num % 2 == 0 ? "0" : "1") + toBinary;
-        num /= 2;
-    }
-    bitset<32> bitnumber(toBinary);
-    toBinary = bitnumber.to_string();
-    return toBinary;
-}
-
 // Fill the text file with number separate by "," calculating the space gave by the user
 int FileCreation::fillNumbers(string filename, int Kilobytes){
-    int numLimit = 32 * Kilobytes;
+    filename += ".csv";
+    int numLimit = (256/2) * Kilobytes; // Used 256 / 2 ints because we need to save the number and also their direccion in the array so for create an array with 1 kb of memory used divide the number for 2
     long tmp;
     string binaryNum;
     fstream writeFile;
     writeFile.open(filename, ios::app);
     for (int i = 1; i <= numLimit; ++i) {
         tmp = rand()%(1-4294967295);
-        binaryNum = intToBinary(tmp);
         if (i == numLimit){
-            writeFile << binaryNum;
+            writeFile << tmp;
         } else{
-            writeFile << binaryNum << ",";
+            writeFile << tmp << ",";
         }
     }
     return 0;
 }
 
 // Create a new csv file
-int FileCreation::createFile(string filename, int Kilobytes){
+int FileCreation::createFileCSV(string filename){
     string fileType;
-    fileType = filename + ".txt";
+    fileType = filename + ".csv";
     cout << "The file: " << fileType << " was successfully created" << endl;
     ofstream reader(fileType.c_str());
     reader.close();
-    fillNumbers(fileType, Kilobytes);
 }
