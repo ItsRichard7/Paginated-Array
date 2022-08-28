@@ -1,15 +1,17 @@
 #include <iostream>
 #include "FileCreation.h"
 #include "SortAlgorithms.h"
-#include "BinaryTraductor.h"
+#include "PagedArray.h"
 
 using namespace std;
 
 int main(int args, char** argv) {
-    if (args == 7){
+    if (args == 1){
         FileCreation fileCreator;
         SortAlgorithms sort;
-        
+
+        //PagedArray pagedArray = new PagedArray();
+        fileCreator.convertIntFile("1KB.csv");
         /*if (argv[4] == "QS"){
             sort.quickSort();
         } else if (argv[4] == "SS"){
