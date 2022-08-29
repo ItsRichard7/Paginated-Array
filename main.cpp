@@ -10,8 +10,9 @@ int main(int args, char** argv) {
         FileCreation fileCreator;
         SortAlgorithms sort;
 
-        //PagedArray pagedArray = new PagedArray();
-        fileCreator.convertIntFile("1KB.csv");
+        PagedArray pagedArray("1KB.csv");
+
+        //fileCreator.convertIntFile("1KB.csv");
         /*if (argv[4] == "QS"){
             sort.quickSort();
         } else if (argv[4] == "SS"){
@@ -19,6 +20,7 @@ int main(int args, char** argv) {
         } else if (argv[4] == "IS"){
             sort.insertionSort();
         }*/
+
         return 0;
     } else{
         cout << "No ingresó la cantidad de parámetros correctos";

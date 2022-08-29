@@ -7,24 +7,22 @@
 using namespace std;
 
 class PagedArray {
+
 public:
-    PagedArray(string text_file, string binary_file);
+    PagedArray(string text_file);
     int operator [] (int pos);
+
 private:
     string textfile;
     string binaryfile;
+    string pathBinary;
 
     int size;
+    int last_paged;
     int pagesInMemory[6];
+    int Pages[6][256];
 
-    int Paged1[256];
-    int Paged2[256];
-    int Paged3[256];
-    int Paged4[256];
-    int Paged5[256];
-    int Paged6[256];
-
-    int loadPaged(int pagedPos, int pagedNum, string binary_file);
+    int loadPaged(int pagedPos, int pagedNum);
 
     int writePaged(int pagedPos);
 
