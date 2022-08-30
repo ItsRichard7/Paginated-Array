@@ -10,25 +10,30 @@ class PagedArray {
 
 public:
     PagedArray(string text_file);
+
     int operator [] (int pos);
 
+    int saveArray();
+
+    int printArray();
 private:
     string textfile;
     string binaryfile;
-    string pathBinary;
 
+    string pathBinary;
     int size;
-    int last_paged;
+    int last_page;
     int pagesInMemory[6];
+
     int Pages[6][256];
 
-    int loadPaged(int pagedPos, int pagedNum);
+    int loadFirstPages();
 
-    int writePaged(int pagedPos);
+    int loadPage(int pagePos, int pageNum);
+
+    int writePage(int pagePos, int pageNum);
 
     int getNumber(int pos);
-
-    int savePaged(int pagedPos, int pagedNum);
 };
 
 
