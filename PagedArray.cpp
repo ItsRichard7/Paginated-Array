@@ -81,9 +81,8 @@ int PagedArray::getNumber(int pos){
 }
 
 int PagedArray::operator [] (int pos){
-    int num = getNumber(pos);
     //cout << "[" << pos << "," << num << "]" << endl;
-    return num;
+    return getNumber(pos);
 }
 
 int PagedArray::saveArray() {
