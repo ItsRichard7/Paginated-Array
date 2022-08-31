@@ -6,7 +6,7 @@
 class SortAlgorithms {
 private:
     int partition(PagedArray array, int low, int high, int pivot);
-    int swap(int a, int b);
+    int swap(int *a, int *b);
     int assign(int a, int b);
     int quickSortAux(PagedArray array, int low, int high);
 public:

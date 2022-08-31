@@ -5,14 +5,16 @@
 
 using namespace std;
 
-PagedArray::PagedArray(string text_file) {
+PagedArray::PagedArray(string text_file, string out_put) {
     textfile = text_file;
+    output = out_put;
     textfile.erase(textfile.end()-4, textfile.end());
     binaryfile = textfile + "Binary.bin";
     textfile.erase(textfile.end()-2, textfile.end());
     size = stoi(textfile);
     cout << "Size of text file is: " << size << " Kilobytes" << endl;
     pathBinary = "/home/itsrichard/Documentos/Proyectos C++/Tarea Extraclase 1/Paginated Array/FilesBinary/" + binaryfile;
+    outputpath = "/home/itsrichard/Documentos/Proyectos C++/Tarea Extraclase 1/Paginated Array/ResultFiles/" + output;
     last_page = 0;
     for (int i = 0; i < 6; ++i) {
         pagesInMemory[i] = 0;
@@ -65,22 +67,22 @@ int PagedArray::writePage(int pagePos, int pageNum){
     return 0;
 }
 
-int PagedArray::getNumber(int pos){
+int* PagedArray::getNumber(int pos){
     int page = ((int) (pos / 256)) + 1;
     //cout << "Position: " << page << endl;
     int position = pos % 256;
     int slot = last_page;
     for (int i = 0; i < 6; ++i) {
         if (pagesInMemory[i] == page){
-            return Pages[i][position];
+            return &Pages[i][position];
         }
     }
     writePage(last_page, pagesInMemory[last_page]);
     loadPage(last_page, page);
-    return Pages[slot][position];
+    return &Pages[slot][position];
 }
 
-int PagedArray::operator [] (int pos){
+int* PagedArray::operator [] (int pos){
     //cout << "[" << pos << "," << num << "]" << endl;
     return getNumber(pos);
 }
@@ -99,6 +101,27 @@ int PagedArray::printArray() {
         cout << endl;
         for (int j = 0; j < 256; ++j) {
             cout << Pages[i][j] << " ";
+        }
+    }
+    return 0;
+}
+
+int PagedArray::createOutputFile() {
+    ofstream csvfile;
+    csvfile.open(outputpath);
+    csvfile.close();
+    cout << "The file: " << output << " was successfully created" << endl;
+    ifstream binaryfile;
+    binaryfile.open(pathBinary, ios::in | ios::binary);
+    fstream writeFile;
+    writeFile.open(outputpath, ios::app);
+    int num;
+    for (int i = 0; i < size * 256 ; ++i) {
+        binaryfile.read((char*)&num, sizeof(int));
+        if (i == size * 256){
+            writeFile << num;
+        } else{
+            writeFile << num << ",";
         }
     }
     return 0;

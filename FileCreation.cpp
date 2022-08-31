@@ -17,7 +17,7 @@ int FileCreation::fillNumbers(string filename, int Kilobytes){
     fstream writeFile;
     writeFile.open(filePath, ios::app);
     for (int i = 1; i <= numLimit; ++i) {
-        tmp = rand()%(1-1000); //4294967295);
+        tmp = rand()%(1-10000); //4294967295);
         if (i == numLimit){
             writeFile << tmp;
         } else{
@@ -41,7 +41,7 @@ int FileCreation::convertIntFile(string filename) {
         while (getline(intFile, line)) {
             stringstream str(line);
             while (getline(str, word, ',')) {
-                cout << word << " ";
+                //cout << word << " ";
                 int num = stoi(word);
                 binaryFile.write(reinterpret_cast<const char *>(&num), sizeof(num));
             }

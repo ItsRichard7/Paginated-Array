@@ -9,18 +9,23 @@ using namespace std;
 class PagedArray {
 
 public:
-    PagedArray(string text_file);
+    PagedArray(string text_file, string output);
 
-    int operator [] (int pos);
+    int* operator [] (int pos);
+
+    void operator = (int a);
 
     int saveArray();
 
     int printArray();
+
+    int createOutputFile();
 private:
     string textfile;
     string binaryfile;
-
+    string outputpath;
     string pathBinary;
+    string output;
     int size;
     int last_page;
     int pagesInMemory[6];
@@ -33,7 +38,7 @@ private:
 
     int writePage(int pagePos, int pageNum);
 
-    int getNumber(int pos);
+    int* getNumber(int pos);
 };
 
 
